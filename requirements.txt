@@ -1,3 +1,4 @@
 Flask
 Flask-SQLAlchemy
 xhtml2pdf
+pymysql
