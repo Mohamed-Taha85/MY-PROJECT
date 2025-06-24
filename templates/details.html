@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+
+{% block title %}Détails Checklist #{{ checklist.id }}{% endblock %}
+
+{% block content %}
+  <div class="dashboard-container">
+    <h1>Détails de la checklist</h1>
+    <p><strong>Nom :</strong> {{ checklist.title }}</p>
+    <p><strong>Date :</strong> {{ checklist.date }}</p>
+    <p><strong>Statut :</strong> {{ checklist.status }}</p>
+
+    <table class="styled-table spaced-table">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Réponse</th>
+          <th>Commentaire</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for it in items %}
+        <tr>
+          <td>{{ it.item_text }}</td>
+          <td>{{ it.answer }}</td>
+          <td>{{ it.comment or '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{{ url_for('historique') }}" class="btn-secondary">← Retour à l’historique</a>
+  </div>
+{% endblock %}

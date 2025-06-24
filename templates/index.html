@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Accueil HSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="welcome-container">
+        <img src="{{ url_for('static', filename='logo_ocp.png') }}" alt="Logo de l'entreprise OCP" class="logo" />
+        <h1>Bienvenue dans l'application HSE</h1>
+        <p>Votre solution pour la gestion des check-lists de sécurité.</p>
+        <p>Connectez-vous ou inscrivez-vous pour commencer</p>
+        <div class="auth-buttons">
+            <a href="{{ url_for('login') }}" class="btn-auth">Se connecter</a>
+            <a href="{{ url_for('signup') }}" class="btn-secondary-auth">S'inscrire</a>
+        </div>
+        <div class="divider">
+            <p>© 2025 HSE Management</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "home.html" %}
+
+{% block title %}Historique des check-lists{% endblock %}
+
+{% block content %}
+  <div class="dashboard-container">
+    <h1>Historique des check-lists</h1>
+
+    <!-- Formulaire de filtres -->
+    <form method="GET" class="filter-form">
+      <div class="form-group-inline">
+        <label for="from_date">Du :</label>
+        <input type="date" id="from_date" name="from_date" value="{{ from_date }}">
+      </div>
+      <div class="form-group-inline">
+        <label for="to_date">Au :</label>
+        <input type="date" id="to_date" name="to_date" value="{{ to_date }}">
+      </div>
+      <div class="form-group-inline">
+        <label for="user">Utilisateur :</label>
+        <select id="user" name="user">
+          <option value="">Tous</option>
+          {% for u in users %}
+            <option value="{{ u }}" {% if user_filter == u %}selected{% endif %}>{{ u }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn">Filtrer</button>
+      <a href="{{ url_for('historique') }}" class="btn-secondary">Réinitialiser</a>
+    </form>
+
+    {% if checklists %}
+      <table class="styled-table spaced-table">
+        <thead>
+          <tr>
+            <th>Utilisateur</th>
+            <th>Nom</th>
+            <th>Date</th>
+            <th>Statut</th>
+            <th>Détails</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cl in checklists %}
+          <tr>
+            <td>{{ cl.created_by }}</td>
+            <td>{{ cl.title }}</td>
+            <td>{{ cl.date }}</td>
+            <td>{{ cl.status }}</td>
+            <td><a href="{{ url_for('voir_details', checklist_id=cl.id) }}">Voir</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="no-data">Aucune checklist dans l’historique pour ces filtres.</p>
+    {% endif %}
+
+    <a href="{{ url_for('home') }}" class="btn-secondary">Retour au tableau de bord</a>
+  </div>
+{% endblock %}

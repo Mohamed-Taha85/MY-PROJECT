@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapport des Check-lists</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  margin: 20px;
+  background-color: #f5f5f5;
+    }
+
+    h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    }
+
+    .period-info {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    }
+
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    table-layout: fixed;
+    }
+
+    th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+
+    max-width: 100%;
+    box-sizing: border-box;
+    }
+
+    th:nth-child(1), td:nth-child(1) { width: 15%; }
+    th:nth-child(2), td:nth-child(2) { width: 40%; }
+    th:nth-child(3), td:nth-child(3) { width: 25%; }
+    th:nth-child(4), td:nth-child(4) { width: 20%; }
+
+    tr:nth-child(even) {
+    background-color: #f9f9f9;
+    }
+
+    tr:hover {
+    background-color: #f0f0f0;
+    }
+
+    .status-complete {
+    color: #008000;
+    font-weight: bold;
+    }
+
+    .status-incomplete {
+    color: #ff6600;
+    font-weight: bold;
+    }
+
+    .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Rapport des Check-lists</h1>
+  
+  <div class="period-info">
+    <p>Période : <strong>{{ from_date }}</strong> à <strong>{{ to_date }}</strong></p>
+  </div>
+  
+  {% if checklists %}
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Titre</th>
+          <th>Créée par</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in checklists %}
+        <tr>
+          <td>{{ c.date }}</td>
+          <td>{{ c.title }}</td>
+          <td>{{ c.created_by }}</td>
+          <td>
+            {% if c.status == 'Complete' %}
+              <span class="status-complete">{{ c.status }}</span>
+            {% else %}
+              <span class="status-incomplete">{{ c.status }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="no-data">
+      <p>Aucune check-list à afficher pour cette période.</p>
+    </div>
+  {% endif %}
+</body>
+</html>
