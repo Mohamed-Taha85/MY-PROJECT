@@ -307,3 +307,40 @@ body {
     background-color: #043354;
     color: #fff;
 }
+
+.checklist-item-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checklist-item-input {
+  flex-grow: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1em;
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.remove-btn {
+  margin-left: 10px;
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: #e60000;
+}
