@@ -45,38 +45,43 @@ body {
     flex-wrap: wrap;
 }
 
-/* Uniform button size for all button types */
-.btn, .btn-auth, .btn-secondary, .btn-secondary-auth {
-    background-color: #28a745;
-    color: #fff;
-    font-weight: 700;
-    padding: 16px 0; /* vertical padding only, horizontal handled by fixed width */
+/* Fixed uniform width buttons with padding */
+.btn-auth, .btn, .btn-secondary-auth, .btn-secondary {
+    width: 180px; /* fixed width for uniformity */
+    padding: 16px 20px; /* enough horizontal padding */
+    box-sizing: border-box; /* include padding in width */
     border-radius: 40px;
-    text-decoration: none;
+    font-weight: 700;
     font-size: 1.1em;
-    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
-    transition: all 0.3s ease;
-    display: inline-block;
     cursor: pointer;
-    border: none;
-    width: 180px;  /* fixed width for all buttons */
     text-align: center;
-    box-sizing: border-box;
-    margin-bottom: 15px; /* spacing between buttons */
+    display: inline-block;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    user-select: none;
 }
 
-/* Specific background and border for secondary buttons */
-.btn-secondary, .btn-secondary-auth {
-    background-color: transparent;
-    color: #f0f0f0;
-    border: 2px solid #f0f0f0;
-    padding: 16px 0; /* match vertical padding */
+/* Primary buttons */
+.btn-auth, .btn {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
+    border: none;
 }
 
 .btn-auth:hover, .btn:hover {
     background-color: #218838;
     box-shadow: 0 12px 30px rgba(33, 136, 56, 0.8);
     transform: translateY(-2px);
+}
+
+/* Secondary buttons */
+.btn-secondary-auth, .btn-secondary {
+    background-color: transparent;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
 }
 
 .btn-secondary-auth:hover, .btn-secondary:hover {
@@ -98,8 +103,7 @@ body {
         align-items: center;
     }
 
-    /* On small screens, buttons get wider */
-    .btn, .btn-auth, .btn-secondary, .btn-secondary-auth {
+    .btn-auth, .btn-secondary-auth {
         width: 200px;
     }
 }
@@ -345,7 +349,10 @@ body {
 }
 
 /* Consistent button spacing across the app */
-.btn, .btn-auth, .btn-secondary, .btn-secondary-auth {
+.btn,
+.btn-auth,
+.btn-secondary,
+.btn-secondary-auth {
   margin-bottom: 15px;
 }
 
