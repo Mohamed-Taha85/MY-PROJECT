@@ -37,7 +37,6 @@ body {
     text-align: center;
 }
 
-/* === AUTH BUTTONS - MAIN MENU BUTTONS STYLE === */
 .auth-buttons {
     display: flex;
     gap: 20px;
@@ -46,20 +45,12 @@ body {
     flex-wrap: wrap;
 }
 
-.auth-buttons .btn-auth,
-.auth-buttons .btn-secondary-auth {
-    width: 200px;         /* fixed width for uniform size */
-    min-width: 200px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-/* BUTTONS GENERAL */
-.btn-auth, .btn {
+/* Uniform button size for all button types */
+.btn, .btn-auth, .btn-secondary, .btn-secondary-auth {
     background-color: #28a745;
     color: #fff;
     font-weight: 700;
-    padding: 16px 40px;
+    padding: 16px 0; /* vertical padding only, horizontal handled by fixed width */
     border-radius: 40px;
     text-decoration: none;
     font-size: 1.1em;
@@ -68,31 +59,24 @@ body {
     display: inline-block;
     cursor: pointer;
     border: none;
-    min-width: 150px;
-    margin-bottom: 15px; /* spacing between buttons */
+    width: 180px;  /* fixed width for all buttons */
     text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 15px; /* spacing between buttons */
+}
+
+/* Specific background and border for secondary buttons */
+.btn-secondary, .btn-secondary-auth {
+    background-color: transparent;
+    color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+    padding: 16px 0; /* match vertical padding */
 }
 
 .btn-auth:hover, .btn:hover {
     background-color: #218838;
     box-shadow: 0 12px 30px rgba(33, 136, 56, 0.8);
     transform: translateY(-2px);
-}
-
-.btn-secondary-auth, .btn-secondary {
-    background-color: transparent;
-    color: #f0f0f0;
-    font-weight: 700;
-    padding: 16px 40px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-size: 1.1em;
-    border: 2px solid #f0f0f0;
-    transition: all 0.3s ease;
-    display: inline-block;
-    cursor: pointer;
-    margin-bottom: 15px; /* spacing */
-    text-align: center;
 }
 
 .btn-secondary-auth:hover, .btn-secondary:hover {
@@ -102,16 +86,21 @@ body {
     transform: translateY(-2px);
 }
 
-/* Responsive Buttons */
+.divider p {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-top: 40px;
+}
+
 @media (max-width: 600px) {
     .auth-buttons {
         flex-direction: column;
         align-items: center;
     }
 
-    .auth-buttons .btn-auth,
-    .auth-buttons .btn-secondary-auth {
-        width: 200px; /* fixed width on small screens */
+    /* On small screens, buttons get wider */
+    .btn, .btn-auth, .btn-secondary, .btn-secondary-auth {
+        width: 200px;
     }
 }
 
@@ -175,16 +164,13 @@ body {
     background-color: rgba(255, 255, 255, 0.15);
     padding: 40px 50px;
     border-radius: 20px;
-    max-width: 800px; /* wider container for tables */
+    max-width: 800px;
     width: 90%;
     text-align: center;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* center all content horizontally */
 }
 
 .dashboard-container h1 {
@@ -197,13 +183,12 @@ body {
 
 .dashboard-container table,
 .styled-table {
-    width: 100%; /* full width inside container */
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    margin: 0 auto;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .dashboard-container thead th,
@@ -235,7 +220,7 @@ body {
 }
 
 .dashboard-container .btn {
-    margin-top: 15px; /* better spacing */
+    margin-top: 15px;
     display: block;
     width: max-content;
     margin-left: auto;
@@ -360,9 +345,12 @@ body {
 }
 
 /* Consistent button spacing across the app */
-.btn,
-.btn-auth,
-.btn-secondary,
-.btn-secondary-auth {
+.btn, .btn-auth, .btn-secondary, .btn-secondary-auth {
   margin-bottom: 15px;
+}
+
+.auth-buttons {
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
