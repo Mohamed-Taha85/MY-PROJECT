@@ -45,30 +45,22 @@ body {
     flex-wrap: wrap;
 }
 
-/* Fixed uniform width buttons with padding */
-.btn-auth, .btn, .btn-secondary-auth, .btn-secondary {
-    width: 180px; /* fixed width for uniformity */
-    padding: 16px 20px; /* enough horizontal padding */
-    box-sizing: border-box; /* include padding in width */
-    border-radius: 40px;
-    font-weight: 700;
-    font-size: 1.1em;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border: none;
-    user-select: none;
-}
-
-/* Primary buttons */
 .btn-auth, .btn {
     background-color: #28a745;
     color: #fff;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 1.1em;
     box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
     border: none;
+    min-width: 150px;
+    margin-bottom: 15px; /* spacing between buttons */
+    text-align: center;
 }
 
 .btn-auth:hover, .btn:hover {
@@ -77,11 +69,20 @@ body {
     transform: translateY(-2px);
 }
 
-/* Secondary buttons */
 .btn-secondary-auth, .btn-secondary {
     background-color: transparent;
     color: #f0f0f0;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 1.1em;
     border: 2px solid #f0f0f0;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 15px; /* spacing */
+    text-align: center;
 }
 
 .btn-secondary-auth:hover, .btn-secondary:hover {
@@ -168,7 +169,7 @@ body {
     background-color: rgba(255, 255, 255, 0.15);
     padding: 40px 50px;
     border-radius: 20px;
-    max-width: 800px;
+    max-width: 800px; /* increased width for better table layout */
     width: 90%;
     text-align: center;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
@@ -187,10 +188,10 @@ body {
 
 .dashboard-container table,
 .styled-table {
-    width: 100%;
+    width: 100%; /* full width inside container */
     border-collapse: separate;
     border-spacing: 0;
-    margin: 0 auto;
+    margin: 0 auto; /* center table */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
@@ -224,7 +225,7 @@ body {
 }
 
 .dashboard-container .btn {
-    margin-top: 15px;
+    margin-top: 15px; /* better spacing */
     display: block;
     width: max-content;
     margin-left: auto;
