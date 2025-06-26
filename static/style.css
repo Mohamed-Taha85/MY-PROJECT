@@ -37,6 +37,7 @@ body {
     text-align: center;
 }
 
+/* === AUTH BUTTONS - MAIN MENU BUTTONS STYLE === */
 .auth-buttons {
     display: flex;
     gap: 20px;
@@ -45,6 +46,15 @@ body {
     flex-wrap: wrap;
 }
 
+.auth-buttons .btn-auth,
+.auth-buttons .btn-secondary-auth {
+    width: 200px;         /* fixed width for uniform size */
+    min-width: 200px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* BUTTONS GENERAL */
 .btn-auth, .btn {
     background-color: #28a745;
     color: #fff;
@@ -92,20 +102,16 @@ body {
     transform: translateY(-2px);
 }
 
-.divider p {
-    font-size: 0.9em;
-    color: #bbb;
-    margin-top: 40px;
-}
-
+/* Responsive Buttons */
 @media (max-width: 600px) {
     .auth-buttons {
         flex-direction: column;
         align-items: center;
     }
 
-    .btn-auth, .btn-secondary-auth {
-        width: 200px;
+    .auth-buttons .btn-auth,
+    .auth-buttons .btn-secondary-auth {
+        width: 200px; /* fixed width on small screens */
     }
 }
 
@@ -169,13 +175,16 @@ body {
     background-color: rgba(255, 255, 255, 0.15);
     padding: 40px 50px;
     border-radius: 20px;
-    max-width: 800px; /* increased width for better table layout */
+    max-width: 800px; /* wider container for tables */
     width: 90%;
     text-align: center;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center all content horizontally */
 }
 
 .dashboard-container h1 {
@@ -191,9 +200,10 @@ body {
     width: 100%; /* full width inside container */
     border-collapse: separate;
     border-spacing: 0;
-    margin: 0 auto; /* center table */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dashboard-container thead th,
@@ -355,10 +365,4 @@ body {
 .btn-secondary,
 .btn-secondary-auth {
   margin-bottom: 15px;
-}
-
-.auth-buttons {
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
