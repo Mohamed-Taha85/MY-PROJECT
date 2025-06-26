@@ -59,6 +59,8 @@ body {
     cursor: pointer;
     border: none;
     min-width: 150px;
+    margin-bottom: 15px; /* spacing between buttons */
+    text-align: center;
 }
 
 .btn-auth:hover, .btn:hover {
@@ -79,6 +81,8 @@ body {
     transition: all 0.3s ease;
     display: inline-block;
     cursor: pointer;
+    margin-bottom: 15px; /* spacing */
+    text-align: center;
 }
 
 .btn-secondary-auth:hover, .btn-secondary:hover {
@@ -165,7 +169,7 @@ body {
     background-color: rgba(255, 255, 255, 0.15);
     padding: 40px 50px;
     border-radius: 20px;
-    max-width: 400px;
+    max-width: 800px; /* increased width for better table layout */
     width: 90%;
     text-align: center;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
@@ -182,15 +186,18 @@ body {
     text-align: center;
 }
 
-.dashboard-container table {
-    width: 100%;
+.dashboard-container table,
+.styled-table {
+    width: 100%; /* full width inside container */
     border-collapse: separate;
     border-spacing: 0;
+    margin: 0 auto; /* center table */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
 
-.dashboard-container thead th {
+.dashboard-container thead th,
+.styled-table th {
     background-color: #00416A;
     color: #FFFFFF;
     text-transform: uppercase;
@@ -199,15 +206,18 @@ body {
     border-bottom: 2px solid #003459;
 }
 
-.dashboard-container tbody tr {
+.dashboard-container tbody tr,
+.styled-table tr {
     background-color: #ffffff;
 }
 
-.dashboard-container tbody tr:hover {
+.dashboard-container tbody tr:hover,
+.styled-table tr:hover {
     background-color: #e6f7ff;
 }
 
-.dashboard-container td {
+.dashboard-container td,
+.styled-table td {
     padding: 12px 10px;
     color: #333333;
     font-size: 0.95em;
@@ -215,7 +225,7 @@ body {
 }
 
 .dashboard-container .btn {
-    margin-top: 10px;
+    margin-top: 15px; /* better spacing */
     display: block;
     width: max-content;
     margin-left: auto;
@@ -302,22 +312,6 @@ body {
     gap: 5px;
 }
 
-.styled-table td, .styled-table th {
-    padding: 12px 20px;
-    text-align: left;
-    vertical-align: middle;
-}
-
-.styled-table tr {
-    background-color: #ffffff;
-    border-bottom: 1px solid #ccc;
-}
-
-.styled-table th {
-    background-color: #043354;
-    color: #fff;
-}
-
 .checklist-item-wrapper {
   display: flex;
   align-items: center;
@@ -355,6 +349,7 @@ body {
   background-color: #e60000;
 }
 
+/* Consistent button spacing across the app */
 .btn,
 .btn-auth,
 .btn-secondary,
