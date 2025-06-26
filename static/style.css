@@ -170,6 +170,8 @@ body {
     text-align: center;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dashboard-container h1 {
@@ -351,4 +353,17 @@ body {
 
 .remove-btn:hover {
   background-color: #e60000;
+}
+
+.btn,
+.btn-auth,
+.btn-secondary,
+.btn-secondary-auth {
+  margin-bottom: 15px;
+}
+
+.auth-buttons {
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
