@@ -16,10 +16,7 @@
       <div class="form-group">
         <label>Éléments de la check-list</label>
         <div id="elements-container">
-          <div class="checklist-item-wrapper">
-            <input type="text" name="elements[]" placeholder="Élément 1" required class="checklist-item-input">
-            <button type="button" class="remove-btn" onclick="removeElement(this)" title="Supprimer cet élément">❌</button>
-          </div>
+          <!-- No element here by default -->
         </div>
         <button type="button" onclick="addElement()" class="btn" style="margin-top: 10px;">+ Ajouter un élément</button>
       </div>
@@ -61,12 +58,7 @@
     function removeElement(button) {
       const wrapper = button.parentNode;
       const container = document.getElementById("elements-container");
-
-      if (container.children.length > 1) {
-        container.removeChild(wrapper);
-      } else {
-        alert("La check-list doit contenir au moins un élément.");
-      }
+      container.removeChild(wrapper);
     }
   </script>
 {% endblock %}

@@ -11,11 +11,6 @@ body {
     min-height: 100vh;
 }
 
-.logo {
-    width: 180px;
-    margin-bottom: 20px;
-}
-
 /* === HOME / ACCUEIL PAGE === */
 .welcome-container {
     background-color: rgba(255, 255, 255, 0.15);
@@ -26,6 +21,20 @@ body {
     max-width: 420px;
     width: 90%;
     backdrop-filter: blur(10px);
+}
+
+.welcome-container h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.welcome-container p {
+    font-size: 1.05em;
+    color: #f0f0f0;
+    margin: 8px 0;
+    text-align: center;
 }
 
 .auth-buttons {
@@ -188,7 +197,6 @@ body {
     border-bottom: 2px solid #003459;
 }
 
-/* ✅ Fix: Uniform row background */
 .dashboard-container tbody tr {
     background-color: #ffffff;
 }
@@ -299,7 +307,7 @@ body {
 }
 
 .styled-table tr {
-    background-color: #ffffff; /* uniform row color */
+    background-color: #ffffff;
     border-bottom: 1px solid #ccc;
 }
 

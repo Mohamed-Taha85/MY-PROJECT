@@ -8,14 +8,17 @@
 </head>
 <body>
     <div class="welcome-container">
-        <img src="{{ url_for('static', filename='logo_ocp.png') }}" alt="Logo de l'entreprise OCP" class="logo" />
+        <!-- 🔥 Logo removed -->
+
         <h1>Bienvenue dans l'application HSE</h1>
-        <p>Votre solution pour la gestion des check-lists de sécurité.</p>
-        <p>Connectez-vous ou inscrivez-vous pour commencer</p>
+        <p class="welcome-subtext">Votre solution pour la gestion des check-lists de sécurité.</p>
+        <p class="welcome-subtext">Connectez-vous ou inscrivez-vous pour commencer</p>
+
         <div class="auth-buttons">
             <a href="{{ url_for('login') }}" class="btn-auth">Se connecter</a>
             <a href="{{ url_for('signup') }}" class="btn-secondary-auth">S'inscrire</a>
         </div>
+
         <div class="divider">
             <p>© 2025 HSE Management</p>
         </div>
