@@ -31,7 +31,8 @@
         <form method="POST">
             <input type="hidden" name="template_id" value="{{ selected_template.id }}">
 
-            {% for idx, item in items|enumerate %}
+            {% for item in items %}
+                {% set idx = loop.index0 %}
                 <div class="checklist-item">
                     <label>{{ item }}</label>
                     <div class="radio-group">
