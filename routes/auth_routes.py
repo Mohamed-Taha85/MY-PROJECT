@@ -1,6 +1,8 @@
 from flask import render_template, request, redirect, session, url_for
 from models import db, User
-from . import auth_bp
+
+
+auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
