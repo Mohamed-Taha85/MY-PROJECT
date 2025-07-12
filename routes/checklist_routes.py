@@ -37,19 +37,28 @@ def creer_modele():
 def remplir_checklist():
     if redirect_resp := require_login():
         return redirect_resp
+
     templates = ChecklistTemplate.query.all()
     message = ''
     selected_template = None
     items = []
+
     if request.method == 'POST':
         selected_id = request.form.get('template_id', type=int)
+        
+        # Load the selected template to display the checklist form
         if 'load_template' in request.form and selected_id:
             selected_template = ChecklistTemplate.query.get(selected_id)
-            items = [l.strip() for l in selected_template.items.splitlines() if l.strip()]
+            if selected_template:
+                items = [line.strip() for line in selected_template.items.splitlines() if line.strip()]
+
+        # Submit the filled checklist
         elif 'submit_checklist' in request.form and selected_id:
             tpl = ChecklistTemplate.query.get(selected_id)
             if tpl:
-                items = [l.strip() for l in tpl.items.splitlines() if l.strip()]
+                items = [line.strip() for line in tpl.items.splitlines() if line.strip()]
+
+                # Create new checklist record
                 checklist = Checklist(
                     title=tpl.title,
                     date=datetime.today().date(),
@@ -57,7 +66,9 @@ def remplir_checklist():
                     created_by=session['username']
                 )
                 db.session.add(checklist)
-                db.session.flush()
+                db.session.flush()  # to get checklist.id before commit
+
+                # Add checklist items (answers + optional comments)
                 for idx, item in enumerate(items):
                     answer = request.form.get(f'item_{idx}')
                     comment = request.form.get(f'comment_{idx}', '').strip()
@@ -69,6 +80,10 @@ def remplir_checklist():
                     ))
                 db.session.commit()
                 message = 'Check‑list enregistrée avec succès.'
+                # Reset after submit to show empty form
+                selected_template = None
+                items = []
+
     return render_template(
         'remplir_checklist.html',
         templates=templates,
@@ -76,6 +91,7 @@ def remplir_checklist():
         items=items,
         message=message
     )
+
 
 @checklist_bp.route('/voir_details/<int:checklist_id>')
 def voir_details(checklist_id):
