@@ -1,64 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Remplir une Check-list</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="form-container">
-        <h1>Remplir une Check-list</h1>
+{% if selected_template %}
+<form method="POST">
+    <input type="hidden" name="template_id" value="{{ selected_template.id }}">
 
-        <!-- 1) Charger le modèle -->
-        <form method="POST">
-            <div class="form-group">
-                <label for="template_id">Sélectionnez un modèle</label>
-                <select name="template_id" id="template_id" required>
-                    <option value="">-- Choisissez --</option>
-                    {% for tpl in templates %}
-                        <option value="{{ tpl.id }}"
-                          {% if selected_template and tpl.id == selected_template.id %}selected{% endif %}>
-                            {{ tpl.title }}
-                        </option>
-                    {% endfor %}
-                </select>
+    {% set items = selected_template.items.splitlines() | select('trim') | list %}
+    {% for item in items %}
+        {% set idx = loop.index0 %}
+        <div class="checklist-item">
+            <label>{{ item }}</label>
+            <div class="radio-group">
+                <label>
+                  <input type="radio" name="item_{{ idx }}" value="Oui" required> Oui
+                </label>
+                <label>
+                  <input type="radio" name="item_{{ idx }}" value="Non"> Non
+                </label>
             </div>
-            <button type="submit" name="load_template" value="1" class="btn">Charger</button>
-        </form>
+            <input type="text"
+                   name="comment_{{ idx }}"
+                   placeholder="Commentaire (optionnel)"
+                   class="comment-input">
+        </div>
+    {% endfor %}
 
-        <!-- Bouton Retour uniquement avant chargement -->
-        {% if not selected_template %}
-            <a href="{{ url_for('home') }}" class="btn-secondary">Retour au tableau de bord</a>
-        {% endif %}
-
-        <!-- 2) Remplir la checklist -->
-        {% if selected_template %}
-        <form method="POST">
-            <input type="hidden" name="template_id" value="{{ selected_template.id }}">
-
-            {% set items = selected_template.items.split('\n') %}
-            {% for item in items %}
-                {% set idx = loop.index0 %}
-                <div class="checklist-item">
-                    <label>{{ item }}</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="item_{{ idx }}" value="Oui" required> Oui</label>
-                        <label><input type="radio" name="item_{{ idx }}" value="Non" required> Non</label>
-                    </div>
-                    <input type="text"
-                           name="comment_{{ idx }}"
-                           placeholder="Commentaire (optionnel)"
-                           class="comment-input">
-                </div>
-            {% endfor %}
-
-            <button type="submit" name="submit_checklist" value="1" class="btn">Soumettre</button>
-        </form>
-        {% endif %}
-
-        {% if message %}
-          <p class="message">{{ message }}</p>
-        {% endif %}
-    </div>
-</body>
-</html>
+    <button type="submit" name="submit_checklist" value="1" class="btn">Soumettre</button>
+</form>
+{% endif %}

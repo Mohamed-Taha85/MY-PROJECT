@@ -7,7 +7,7 @@
     <h1>Créer un modèle de check-list</h1>
     <p>Ajoutez un nouveau modèle de check-list HSE.</p>
 
-    <form method="POST" action="{{ url_for('creer_modele') }}">
+    <form method="POST" action="{{ url_for('checklist.creer_modele') }}">
       <div class="form-group">
         <label for="title">Titre du modèle</label>
         <input type="text" id="title" name="title" placeholder="Ex: Check-list EPI" required>
@@ -16,13 +16,16 @@
       <div class="form-group">
         <label>Éléments de la check-list</label>
         <div id="elements-container">
-          <!-- No element here by default -->
+          <!-- Checklist elements will be added here -->
         </div>
         <button type="button" onclick="addElement()" class="btn" style="margin-top: 10px;">+ Ajouter un élément</button>
       </div>
 
+      <!-- Hidden textarea that will be filled before submit -->
+      <textarea name="items" id="items" hidden></textarea>
+
       <button type="submit" class="btn">Créer</button>
-      <a href="{{ url_for('home') }}" class="btn-secondary">Retour</a>
+      <a href="{{ url_for('home.home') }}" class="btn-secondary">Retour</a>
     </form>
   </div>
 
@@ -35,7 +38,6 @@
 
       const input = document.createElement("input");
       input.type = "text";
-      input.name = "elements[]";
       input.placeholder = "Nouvel élément";
       input.required = true;
       input.className = "checklist-item-input";
@@ -45,20 +47,24 @@
       removeBtn.className = "remove-btn";
       removeBtn.title = "Supprimer cet élément";
       removeBtn.textContent = "❌";
-      removeBtn.onclick = function() {
+      removeBtn.onclick = function () {
         removeElement(this);
       };
 
       wrapper.appendChild(input);
       wrapper.appendChild(removeBtn);
-
       container.appendChild(wrapper);
     }
 
     function removeElement(button) {
       const wrapper = button.parentNode;
-      const container = document.getElementById("elements-container");
-      container.removeChild(wrapper);
+      wrapper.remove();
     }
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const inputs = document.querySelectorAll("#elements-container input");
+      const items = Array.from(inputs).map(input => input.value.trim()).filter(Boolean);
+      document.getElementById("items").value = items.join("\n");
+    });
   </script>
 {% endblock %}

@@ -24,7 +24,7 @@
             <td>{{ cl.title }}</td>
             <td>{{ cl.date }}</td>
             <td>{{ cl.status }}</td>
-            <td><a href="{{ url_for('voir_details', checklist_id=cl.id) }}">Voir</a></td>
+            <td><a href="{{ url_for('checklist.voir_details', checklist_id=cl.id) }}">Voir</a></td>
           </tr>
           {% endfor %}
         </tbody>
@@ -33,6 +33,6 @@
       <p class="no-data">Aucune checklist dans l’historique.</p>
     {% endif %}
 
-    <a href="{{ url_for('home') }}" class="btn-secondary">Retour au tableau de bord</a>
+    <a href="{{ url_for('home.home') }}" class="btn-secondary">← Retour au tableau de bord</a>
   </div>
 {% endblock %}

@@ -40,17 +40,15 @@
         </tbody>
       </table>
 
-      {# Bouton d’export réservé aux responsables, 
-         mais dans la route seuls les responsables accèdent #}
-      <form method="POST" action="{{ url_for('export_rapport_pdf') }}">
+      <form method="POST" action="{{ url_for('export.export_rapport_pdf') }}">
         <input type="hidden" name="from_date" value="{{ from_date }}">
-        <input type="hidden" name="to_date"   value="{{ to_date }}">
+        <input type="hidden" name="to_date" value="{{ to_date }}">
         <button type="submit" class="btn">Exporter en PDF</button>
       </form>
     {% elif from_date and to_date %}
       <p class="no-data">Aucune check-list trouvée pour cette période.</p>
     {% endif %}
 
-    <a href="{{ url_for('home') }}" class="btn-secondary">← Retour au tableau de bord</a>
+    <a href="{{ url_for('home.home') }}" class="btn-secondary">← Retour au tableau de bord</a>
   </div>
 {% endblock %}

@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    {# --- On enlève la nav pour qu’il n’y ait plus la liste de liens en haut --- }
+    {# --- Navigation supprimée pour un affichage plus propre --- #}
     {# 
     <nav class="main-nav">
       {% if session.get('role') == 'responsable' %}
-        <a href="{{ url_for('creer_modele') }}">Créer un modèle</a>
-        <a href="{{ url_for('generer_rapport') }}">Générer rapport</a>
+        <a href="{{ url_for('checklist.creer_modele') }}">Créer un modèle</a>
+        <a href="{{ url_for('export.generer_rapport') }}">Générer rapport</a>
       {% endif %}
-      <a href="{{ url_for('remplir_checklist') }}">Remplir checklist</a>
-      <a href="{{ url_for('historique') }}">Historique</a>
-      <a href="{{ url_for('non_conformites') }}">Non-conformités</a>
-      <a href="{{ url_for('logout') }}" class="logout-btn">Se déconnecter</a>
+      <a href="{{ url_for('checklist.remplir_checklist') }}">Remplir checklist</a>
+      <a href="{{ url_for('checklist.historique') }}">Historique</a>
+      <a href="{{ url_for('checklist.non_conformites') }}">Non-conformités</a>
+      <a href="{{ url_for('auth.logout') }}" class="logout-btn">Se déconnecter</a>
     </nav>
     #}
 
@@ -26,19 +26,17 @@
             <h1>Tableau de bord HSE</h1>
             <p>Sélectionnez une fonctionnalité ci-dessous pour commencer.</p>
 
-            {# Boutons principaux #}
             {% if session.get('role') == 'responsable' %}
-                <a href="{{ url_for('creer_modele') }}" class="btn">Créer un modèle de check-list</a>
+                <a href="{{ url_for('checklist.creer_modele') }}" class="btn">Créer un modèle de check-list</a>
             {% endif %}
-            <a href="{{ url_for('remplir_checklist') }}" class="btn">Remplir une check-list</a>
-            <a href="{{ url_for('historique') }}" class="btn">Voir l'historique des inspections</a>
-            <a href="{{ url_for('non_conformites') }}" class="btn">Gérer les non-conformités</a>
+            <a href="{{ url_for('checklist.remplir_checklist') }}" class="btn">Remplir une check-list</a>
+            <a href="{{ url_for('checklist.historique') }}" class="btn">Voir l'historique des inspections</a>
+            <a href="{{ url_for('checklist.non_conformites') }}" class="btn">Gérer les non-conformités</a>
             {% if session.get('role') == 'responsable' %}
-                <a href="{{ url_for('generer_rapport') }}" class="btn">Générer un rapport</a>
+                <a href="{{ url_for('export.generer_rapport') }}" class="btn">Générer un rapport</a>
             {% endif %}
 
-            {# Bouton de déconnexion en bas #}
-            <a href="{{ url_for('logout') }}" class="btn btn-return">Se déconnecter</a>
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-return">Se déconnecter</a>
         </div>
       {% endblock %}
     </main>

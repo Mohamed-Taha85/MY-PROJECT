@@ -4,36 +4,62 @@
     <meta charset="UTF-8"/>
     <title>Non-conformités</title>
     <style>
-      table { width: 100%; border-collapse: collapse; }
-      th, td { border: 1px solid #000; padding: 4px; }
-      th { background: #eee; }
-      h1 { text-align: center; }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 6px 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .no-data {
+            text-align: center;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
-  <h1>Liste des non-conformités</h1>
+    <h1>Liste des non-conformités</h1>
 
-  {% if non_conform_items %}
+    {% if non_conform_items %}
     <table>
-      <thead>
-        <tr>
-          <th>Checklist</th>
-          <th>Élément</th>
-          <th>Commentaire</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for nc in non_conform_items %}
-        <tr>
-          <td>{{ nc.checklist.title }}</td>
-          <td>{{ nc.item_text }}</td>
-          <td>{{ nc.comment or '—' }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
+        <thead>
+            <tr>
+                <th>Checklist</th>
+                <th>Élément</th>
+                <th>Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nc in non_conform_items %}
+            <tr>
+                <td>{{ nc.checklist.title }}</td>
+                <td>{{ nc.item_text }}</td>
+                <td>{{ nc.comment or '—' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-  {% else %}
-    <p>Aucune non-conformité à afficher.</p>
-  {% endif %}
+    {% else %}
+    <p class="no-data">Aucune non-conformité à afficher.</p>
+    {% endif %}
 </body>
 </html>

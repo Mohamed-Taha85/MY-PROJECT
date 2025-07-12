@@ -30,14 +30,14 @@
       </table>
 
       <!-- ✅ PDF export button -->
-      <a href="{{ url_for('export_non_conformites_pdf') }}" class="btn">Exporter en PDF</a>
+      <a href="{{ url_for('export.export_non_conformites_pdf') }}" class="btn">Exporter en PDF</a>
 
     {% else %}
       <p class="no-data">Aucune non‑conformité trouvée.</p>
     {% endif %}
 
     <!-- ✅ Always visible back to dashboard -->
-    <a href="{{ url_for('home') }}" class="btn">Retour au tableau de bord</a>
+    <a href="{{ url_for('home.index') }}" class="btn">Retour au tableau de bord</a>
   </div>
 </body>
 </html>
